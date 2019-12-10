@@ -1,9 +1,9 @@
 // CRUD create read update delete
-const mongodb = require('mongodb')
-const MongoClient = mongodb.MongoClient
+const { MongoClient, ObjectID } = require('mongodb')
 
 const connectionURL = 'mongodb://localhost:27017';
 const databaseName = 'task-manager';
+
 
 MongoClient.connect(connectionURL, {
     useNewUrlParser: true
@@ -13,15 +13,23 @@ MongoClient.connect(connectionURL, {
     }
 
     const db = client.db(databaseName);
-    db.collection('users').insertOne({
-        name: 'Me',
-        age: 12
-    }, (err , result) => {
-        if (err) console.log(err);
-        console.log(result.opt);
-    })
+    
+    // db.collection('users').updateOne({
+    //     _id: new ObjectID('5de7ba8125bf07107cf567dd')
+    // }, {
+    //     $inc: {
+    //         age: 2
+    //     }
+    // }).then((result) => {
+    //     console.log(result);
+        
+    // }).catch((err) => {
+    //     console.log(err);
+        
+    // })
 
-    
-    
+    db.collection('tasks').deleteOne({
+        title: "Find 1"
+    })
 
 })
