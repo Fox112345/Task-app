@@ -2,7 +2,8 @@ const mongoose = require('mongoose');
 
 mongoose.connect('mongodb://localhost:27017/task-manager-api', {
     useNewUrlParser: true,
-    useCreateIndex: true
+    useCreateIndex: true,
+    useFindAndModify: false
 })
 
 
@@ -17,18 +18,6 @@ mongoose.connect('mongodb://localhost:27017/task-manager-api', {
 //     .catch((e) => console.log('Error!!!', e))
 
 
-
-const Task = mongoose.model('Tasks', {
-    descr: {
-        type: String,
-        required: true,
-        trim: true
-    },
-    done: {
-        type: Boolean,
-        default: false
-    }
-})
 
 // const task = new Task({
 //     descr: 'Task 1',
