@@ -4,8 +4,13 @@ const userRouter = require('./routers/user')
 const taskRouter = require('./routers/tasks')
 
 
+
 const app = express()
 const port = process.env.PORT || 3000
+
+// app.use((req, res, next)=>{
+//     res.status(503).send("Unavailanble")
+// })
 
 app.use(express.json())
 app.use(userRouter)
@@ -15,4 +20,6 @@ app.listen(port, () => {
     console.log('Server is runing on port ' + port);
 })
 
-const jwt = require('jsonwebtoken');
+
+
+
